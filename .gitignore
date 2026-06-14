@@ -16,3 +16,20 @@ frontend/node_modules/
 dist/
 build/
 
+.Python
+*.egg-info/
+.eggs/
+.venv
+venv/
+env/
+ENV/
+
+.ipynb_checkpoints/
+
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pytype/
+.pyre/
+
+.streamlit/secrets.toml
