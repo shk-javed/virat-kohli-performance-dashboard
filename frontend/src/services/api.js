@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8000/api";
+const API_URL =
+  "https://virat-kohli-performance-dashboard.onrender.com/api";
 
 async function fetchJson(path) {
   const res = await fetch(`${API_URL}${path}`, {
