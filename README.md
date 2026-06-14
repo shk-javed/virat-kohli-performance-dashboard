@@ -4,16 +4,17 @@ An interactive **Full Stack Cricket Analytics Dashboard** built to perform an in
 
 This project transforms raw match-by-match cricket data into meaningful business-style insights through dynamic visualizations, real-time filtering, KPI cards, and statistical analysis. Users can interactively explore Virat Kohli's performances across different formats, years, opponents, venues, batting positions, and several advanced performance metrics.
 
-The application follows a complete **Frontend + Backend + Database architecture**, where the frontend communicates with REST APIs, the backend dynamically generates SQL queries based on user-selected filters, and the database performs real-time aggregations to return accurate statistics.
+The application follows a complete **Frontend + Backend +Database architecture**, where the frontend communicates with REST APIs, the backend dynamically generates SQL queries based on user-selected filters, and the database performs real-time aggregations to return accurate statistics.
 
 Rather than displaying static charts, every visualization updates instantly based on selected filters, providing an interactive analytics experience similar to professional sports intelligence platforms.
 
 ---
 
-
 # 📊 Dashboard Preview
 
-![Dashboard Preview](Images/dashboard-preview.png)
+![Dashboard Preview](dashboard-preview.png)
+
+---
 
 # 🚀 Project Overview
 
@@ -48,12 +49,11 @@ The project demonstrates an end-to-end workflow starting from structured data st
 - Build responsive and interactive charts
 - Implement real-time filtering using backend APIs
 - Demonstrate full stack data analytics architecture
-
 ---
 
 # 🛠 Tools & Technologies
 
-### Frontend
+## Frontend
 
 - React.js
 - JavaScript (ES6)
@@ -61,34 +61,31 @@ The project demonstrates an end-to-end workflow starting from structured data st
 - Recharts
 - Responsive UI Components
 
-### Backend
+## Backend
 
 - FastAPI
 - Python
 - SQLAlchemy
 - REST API Development
 
-### Database
+## Database
 
 - MySQL
 - SQL Aggregations
 - Dynamic Query Generation
 
-### Data Analytics
+## Data Analytics
 
 - KPI Calculation
 - Statistical Aggregation
 - Performance Analysis
 - Filter-based Analytics
 
-### Development Tools
+## Development Tools
 
 - Git
 - GitHub
 - VS Code
-
----
-
 
 ---
 
@@ -104,3 +101,150 @@ The project demonstrates an end-to-end workflow starting from structured data st
 - Dynamic SQL Query Execution
 - Responsive Dashboard Design
 - Full Stack Architecture
+
+---
+
+# 📸 Dashboard Screenshots
+
+## 🏏 Complete Dashboard
+
+![Complete Dashboard](dashboard-preview.png)
+
+Displays overall career statistics, KPI cards, yearly runs, format distribution, batting position analysis and smart insights.
+
+---
+
+## 📈 ODI Dashboard
+
+![ODI Dashboard](odi-dashboard.png)
+
+Analyzes Virat Kohli's complete ODI performance using dynamic visualizations and KPIs.
+
+---
+
+## 🏆 Test Dashboard
+
+![Test Dashboard](test-dashboard.png)
+
+Provides detailed Test career analysis with real-time statistics and trend visualization.
+
+---
+
+## ⚡ T20I Dashboard
+
+![T20 Dashboard](t20-dashboard.png)
+
+Displays T20 International batting analysis including strike rate, average and yearly performance.
+
+
+---
+
+## 🇦🇺 Australia Filter
+
+![Australia Filter](australia-filter.png)
+
+Dynamic filtering of performance against Australia.
+
+---
+
+## 🏴 England Filter
+
+![England Filter](england-filter.png)
+
+Interactive analysis of Virat Kohli's records against England.
+
+---
+
+## 🇵🇰 Pakistan Filter
+
+![Pakistan Filter](pakistan-filter.png)
+
+Performance analysis against Pakistan with dynamic charts.
+
+---
+
+## 🇿🇦 South Africa Filter
+
+![South Africa Filter](south-africa-filter.png)
+
+Shows batting performance against South Africa.
+
+---
+
+## 🇱🇰 Sri Lanka Filter
+
+![Sri Lanka Filter](sri-lanka-filter.png)
+
+Displays batting statistics against Sri Lanka.
+
+---
+
+## 🏠 Home vs Away Analysis
+
+![Home Analysis](home-analysis.png)
+
+Compares Home, Away and Neutral venue performances dynamically.
+
+---
+
+## 💡 Smart Insights
+
+![Smart Insights](smart-insights.png)
+
+Automatically identifies:
+
+- Best Year
+- Best Opponent
+- Best Country
+- Best Format
+- Best Continent
+
+---
+
+# ⚙️ Full Stack Architecture
+
+```text
+React Frontend
+        │
+        ▼
+     REST API
+        │
+        ▼
+      FastAPI
+        │
+        ▼
+   SQLAlchemy ORM
+        │
+        ▼
+       MySQL
+        │
+        ▼
+ Dynamic SQL Queries
+        │
+        ▼
+    JSON Response
+        │
+        ▼
+Interactive Dashboard
+```
+
+---
+
+# 📚 What I Learned
+
+- React Dashboard Development
+- FastAPI REST API Development
+- SQLAlchemy ORM
+- MySQL Query Optimization
+- Dynamic Data Filtering
+- Recharts Visualization
+- Full Stack Integration
+- Data Analytics Dashboard Design
+
+---
+
+# 👨‍💻 Author
+
+**Munir Patel**
+
+⭐ If you like this project, consider giving it a star on GitHub.
