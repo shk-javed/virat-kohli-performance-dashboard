@@ -1,0 +1,1055 @@
+/* =========================================================
+   VIRAT KOHLI DASHBOARD — PREMIUM DARK GOLD
+   STRICT POWER BI SINGLE-CANVAS LAYOUT
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Inter:wght@400;500;600&display=swap');
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --bg: #0b0e14;
+  --bg2: #0f1318;
+  --panel: #131820;
+  --panel2: #181e28;
+  --gold: #f5c24b;
+  --gold2: #e8a832;
+  --gold-dim: rgba(245, 194, 75, 0.15);
+  --gold-glow: rgba(245, 194, 75, 0.25);
+  --blue: #3b82f6;
+  --orange: #f97316;
+  --red: #ef4444;
+  --purple: #8b5cf6;
+  --green: #10b981;
+  --text: #e8eaf0;
+  --muted: #8b95a5;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-g: rgba(245, 194, 75, 0.3);
+  --r: 12px;
+  /* Uniform Border Radius */
+  --font-d: 'Barlow Condensed', sans-serif;
+  --font-b: 'Rajdhani', sans-serif;
+  --font-r: 'Inter', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-r);
+  overflow: hidden;
+  /* STRICT LOCK: NO SCROLL ON BODY */
+
+}
+
+
+/* ── Shell (Overall Layout) ─────────────────────────────── */
+.shell {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Canvas ke bahar scroll nahi jana chahiye */
+}
+
+/* ── Left Sidebar (PREMIUM COMPACT LAYOUT) ───────────────────────── */
+.sidebar {
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 10px 8px;
+  overflow: hidden;
+}
+
+.sb-brand {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+
+.sb-crown { font-size: 1.4rem; color: var(--gold); }
+.sb-brand-name { font-family: var(--font-d); font-size: 1rem; font-weight: 900; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+.sb-brand-sub { font-size: 0.55rem; color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase; }
+
+/* Profile Card */
+.sb-profile { padding: 0 5px 10px 5px; }
+.sb-profile-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(245, 194, 75, 0.3); border-radius: 8px; padding: 10px; }
+.sb-profile-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.sb-p-label { font-family: var(--font-b); font-size: 0.58rem; color: var(--gold); text-transform: uppercase; }
+.sb-p-val { font-family: var(--font-r); font-size: 0.65rem; color: #fff; font-weight: 600; }
+
+/* Navigation */
+.sb-nav { display: flex; flex-direction: column; gap: 2px; flex: 1; overflow-y: auto; scrollbar-width: none; }
+.sb-link { display: flex; align-items: center; gap: 8px; padding: 7px 8px; background: transparent; border: none; border-radius: 6px; color: var(--muted); font-family: var(--font-r); font-size: 0.7rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; width: 100%; text-align: left; }
+.sb-link.active { color: #fff !important; background: rgba(245, 194, 75, 0.1) !important; border-left: 2px solid var(--gold) !important; }
+.sb-icon { font-size: 0.85rem; flex-shrink: 0; color: var(--gold); }
+
+/* Trivia & Footer */
+.sb-fact-box { margin: 15px 5px; background: rgba(245, 194, 75, 0.05); border: 1px solid rgba(245, 194, 75, 0.2); border-radius: 10px; padding: 12px; transition: 0.3s; }
+.sb-fact-header { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; color: var(--gold); font-family: var(--font-b); font-size: 0.6rem; text-transform: uppercase; }
+.sb-fact-box p { color: #fff; font-size: 0.72rem; line-height: 1.4; opacity: 0.85; }
+
+.sb-footer { padding: 10px 5px; border-top: 1px solid var(--border); font-size: 0.65rem; }
+.sb-footer-line { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.sb-muted { color: #888; }
+.sb-link-ext { color: var(--gold) !important; text-decoration: none; }
+.sb-refresh { width: 100%; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); color: #fff; padding: 6px; border-radius: 5px; cursor: pointer; margin-top: 8px; font-size: 0.65rem; transition: 0.3s; }
+.sb-refresh:hover { background: var(--gold); color: #000; font-weight: bold; }
+
+/* ── Right Filters Sidebar ──────────────────────────────── */
+.filters-sidebar {
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 14px;
+  gap: 16px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.filters-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.fs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.fs-title {
+  font-family: var(--font-d);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.fs-icon {
+  color: var(--muted);
+}
+
+.fs-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fs-label {
+  font-family: var(--font-b);
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.fs-year-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.fs-range {
+  width: 100%;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.fs-select {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.fs-select:focus {
+  border-color: var(--gold);
+}
+
+.fs-chase-card {
+  margin-top: auto;
+  background: var(--gold-dim);
+  border: 1px solid var(--border-g);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.fcc-label {
+  font-size: 0.7rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.fcc-sub {
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.fcc-val {
+  font-family: var(--font-d);
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+
+/* ── Main area (STRICT SINGLE CANVAS) ───────────────────── */
+/* Update your existing .main class to this */
+.main {
+  display: grid;
+  /* Hero(110px) + KPI(70px) + Panels(Remaining) */
+  grid-template-rows: 115px 75px 1fr;
+  height: 100vh;
+  padding: 5px;
+  gap: 10px;
+  overflow: hidden; 
+  background: var(--bg);
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Hero Section (RESTORED PREMIUM LAYOUT) ────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 120px 220px 1fr 140px; /* Image | Name | Cards | Jersey */
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #0f1520 0%, #13192a 50%, #0f1520 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  height: 110px;
+  padding: 0 20px;
+  z-index: 10;
+  position: relative;
+}
+
+
+
+.hero-img {
+  height: 95px;
+  object-fit: contain;
+  filter: drop-shadow(0 -5px 10px rgba(245, 194, 75, .3));
+}
+
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
+  width: 100%; /* Force width */
+  overflow: visible !important; /* SKew ko cut hone se bachayega */
+}
+
+/* Virat Kohli name ke liye update */
+.hero-name {
+  font-family: var(--font-d) !important;
+  font-size: 2.3rem !important;
+  font-weight: 900 !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  letter-spacing: 1.3px !important;
+  
+  /* Transformation aur Italic style */
+  font-style: normal; /* Ye skewX ka best alternative hai */
+  
+  /* Glow aur Shadow */
+  text-shadow: 2px 2px 0px rgba(255, 192, 47, 0.906), 
+               12px 12px 15px rgba(233, 227, 214, 0.6) !important;
+}
+
+
+.hero-tagline {
+  font-family: var(--font-d);
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 0px rgba(248, 248, 248, 0.906), 
+               22px 12px 22px rgba(233, 227, 214, 0.6) !important;
+}
+
+
+
+
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.hero-kpi-bar {
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.hk-item {
+  display: flex !important;
+  align-items: center !important; /* Icon aur content ko line mein laane ke liye */
+  gap: 8px !important;
+  height: 60px !important;
+  width: 130px !important; /* Thoda wide kiya */
+  padding: 0 10px !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%) !important;
+  border: 1px solid rgba(245, 194, 75, 0.2) !important;
+  border-radius: 8px !important;
+}
+
+
+.hk-icon {
+  font-size: 1.2rem !important;
+  color: var(--gold) !important;
+}
+
+.hk-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.hk-label {
+  font-family: var(--font-b) !important;
+  font-size: 0.5rem !important;
+  color: var(--muted) !important;
+  text-transform: uppercase !important;
+}
+
+
+.hk-val {
+  color: #fff !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  font-family: var(--font-d) !important;
+  line-height: 1 !important;
+}
+
+.hk-item:hover {
+  border-color: var(--gold);
+  background: rgba(245, 194, 75, 0.08);
+  transform: translateY(-2px); /* Halki si lift effect */
+}
+
+
+.hk-item svg {
+  font-size: 1.1rem; /* Icon Size Badhaya */
+  margin-bottom: 4px;
+  color: var(--gold);
+}
+
+.hk-item span {
+  color: #fff;
+  font-size: 0.95rem; /* Value Font Size Badhaya */
+  font-weight: 700;
+  font-family: var(--font-d);
+  letter-spacing: 0.5px;
+}
+
+
+.jersey-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.jc-num {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 3.5rem;
+  color: var(--gold);
+  line-height: 1;
+  text-shadow: 0 0 15px rgba(245, 194, 75, 0.3);
+}
+
+
+.hero-badges {
+  display: flex;
+  gap: 10px;
+}
+
+.hb-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.hb-icon { color: var(--gold); font-size: 0.6rem; }
+.hb-label { font-size: 0.4rem; color: var(--muted); text-transform: uppercase; }
+.hb-val { font-family: var(--font-b); font-size: 0.65rem; font-weight: 700; color: #fff; }
+
+.jc-label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: -5px;
+  text-shadow: 0px 0px 0px rgba(248, 248, 248, 0.906), 
+               22px 12px 22px rgba(233, 227, 214, 0.6) !important;
+}
+
+
+
+/* ── KPI Row ────────────────────────────────────────────── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  /* Extra space ensure karo */
+  margin-top: 5px; 
+}
+
+.kpi-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  padding: 6px 10px;
+  /* 8px se 6px */
+
+  min-height: 72px;
+  /* NEW */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.kpi-card.active {
+  border-color: var(--gold);
+  box-shadow: inset 0 0 15px rgba(245, 194, 75, 0.1);
+  background: rgba(245, 194, 75, 0.05);
+}
+
+.kpi-card.skeleton {
+  min-height: 65px;
+  animation: pulse 1.4s ease infinite;
+}
+
+.kc-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.kc-icon {
+  font-size: 0.9rem;
+}
+
+.kc-title {
+  font-size: 0.5rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-b);
+  font-weight: 700;
+}
+
+.kc-value {
+  font-family: var(--font-d);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+.kc-sub {
+  display: none;
+  /* Hidden to maintain compact look */
+}
+
+.sparkline {
+  display: none;
+  /* Hidden to maintain compact look */
+}
+
+
+/* ── Panel Grid (Strict fit) ────────────────────────────── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Panel ──────────────────────────────────────────────── */
+.panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden; 
+}
+
+.panel-hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.panel-hd h3 {
+  font-family: var(--font-b);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.panel-sub {
+  font-size: 0.55rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+/* Charts Box Constraint */
+.chart-box {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  /* CRITICAL for Recharts shrink */
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Donut chart (Fixed Alignment) ──────────────────────── */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+}
+
+.donut-chart-area {
+  position: relative;
+  flex: 1;
+  /* Takes space dynamically */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.dc-val {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.dc-sub {
+  font-size: 0.5rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.donut-legend {
+  flex: 0 0 45%;
+  /* Fix legend width so it doesn't crush */
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.dl-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-size: 0.65rem;
+}
+
+.dl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.dl-fmt {
+  color: var(--text);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dl-runs {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.65rem;
+}
+
+.dl-pct {
+  color: var(--muted);
+  font-size: 0.6rem;
+}
+
+/* ── Batting Position Table (Compact) ───────────────────── */
+.bp-table-wrap {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+}
+
+.bp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.7rem;
+  table-layout: fixed;
+  /* VERY IMPORTANT: Prevents table from stretching */
+}
+
+.bp-table th {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  font-family: var(--font-b);
+  font-weight: 700;
+  padding: 6px 4px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+}
+
+.bp-table th:first-child {
+  text-align: left;
+  width: 30%;
+}
+
+.bp-table td {
+  padding: 6px 4px;
+  text-align: right;
+  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: 0.65rem;
+}
+
+.bp-table td:first-child {
+  text-align: left;
+}
+
+.bp-table tr:last-child td {
+  border-bottom: none;
+}
+
+.bp-top {
+  background: rgba(245, 194, 75, .06);
+}
+
+/* Permanent highlight for Position 3 */
+.bp-top {
+  background: rgba(245, 194, 75, .08);
+}
+
+.bp-top td {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Hover effect for ALL rows */
+.bp-table tbody tr:hover {
+  background: rgba(245, 194, 75, .06);
+  transition: all .2s ease;
+}
+
+.bp-table tbody tr:hover td {
+  color: #fff;
+}
+
+/* Position 3 should stay gold even on hover */
+.bp-top:hover {
+  background: rgba(245, 194, 75, .12);
+}
+
+.bp-top:hover td {
+  color: var(--gold);
+}
+
+.bp-pos {
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.bp-runs {
+  color: #fff;
+  font-weight: 700;
+}
+
+.bp-insight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(245, 194, 75, 0.05);
+  border: 1px solid var(--border-g);
+  border-radius: 8px;
+
+  padding: 5px 8px;
+  /* 8px 10px se kam */
+  font-size: 0.60rem;
+  /* 0.65rem se thoda kam */
+  line-height: 1.15;
+
+  color: var(--gold);
+  margin-top: auto;
+}
+
+.bp-insight-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Smart Insights ─────────────────────────────────────── */
+.si-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  justify-content: space-between;
+}
+
+.si-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  transition: border-color 0.15s;
+}
+
+.si-card:hover {
+  border-color: var(--border-g);
+  background: rgba(245, 194, 75, 0.03);
+}
+
+.si-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.si-label {
+  flex: 1;
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-family: var(--font-b);
+  font-weight: 600;
+}
+
+.si-val {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.si-sub {
+  font-size: 0.6rem;
+  color: var(--gold);
+  margin-left: 8px;
+  width: 60px;
+  text-align: right;
+}
+
+.si-note {
+  margin-top: 10px;
+  padding: 8px;
+  background: rgba(245, 194, 75, 0.05); /* Very light gold bg */
+  border-left: 2px solid var(--gold);   /* Gold accent border */
+  border-radius: 4px;
+  font-family: var(--font-b);
+  font-size: 0.65rem;                   /* Chota font size */
+  color: var(--gold);                   /* Golden color */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+/* ── Chase Master Stats ─────────────────────────────────── */
+.cm-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-height: 0;
+  justify-content: space-between;
+}
+
+.cm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cm-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.cm-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.cm-label {
+  flex: 1;
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.cm-value {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.cm-avg-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold-dim);
+  border: 1px solid var(--border-g);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.ca-label {
+  font-size: 0.65rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.ca-sub {
+  font-size: 0.55rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+}
+
+.ca-val {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1.1;
+}
+
+
+/* ── Utility ────────────────────────────────────────────── */
+.no-data {
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 12px;
+  text-align: center;
+}
+
+.error-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ef4444;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* ── Recharts overrides ─────────────────────────────────── */
+.recharts-surface {
+  overflow: visible !important;
+}
+
+.recharts-tooltip-cursor {
+  fill: rgba(255, 255, 255, 0.04);
+}
+
+.recharts-default-tooltip {
+  background-color: var(--bg2) !important;
+  border: 1px solid var(--border-g) !important;
+  border-radius: 8px !important;
+}
+
+
+/* ── FINAL CLEAN HERO KPI FIX ────────────────── */
+.hero-kpi-bar {
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.hk-item {
+  display: flex !important;
+  flex-direction: row !important; /* Icon aur content side-by-side */
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  
+  height: 55px !important;
+  width: 140px !important;
+  padding: 0 12px !important;
+  
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(245, 194, 75, 0.2) !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.hk-icon {
+  font-size: 1.2rem !important;
+  color: var(--gold) !important;
+  flex-shrink: 0 !important;
+}
+
+.hk-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+.hk-label {
+  font-family: var(--font-b) !important;
+  font-size: 0.5rem !important;
+  color: var(--muted) !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
+
+.hk-val {
+  color: #fff !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  font-family: var(--font-d) !important;
+  line-height: 1 !important;
+}
+
+/* Hover Effect */
+.hk-item:hover {
+  border-color: var(--gold) !important;
+  background: rgba(245, 194, 75, 0.08) !important;
+}
