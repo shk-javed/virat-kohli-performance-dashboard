@@ -12,6 +12,9 @@ Rather than displaying static charts, every visualization updates instantly base
 
 # 📊 Dashboard Preview
 
+
+live link [https://virat-kohli-performance-dashboard.vercel.app]
+
 ![Dashboard Preview](dashboard-preview.png)
 
 ---
